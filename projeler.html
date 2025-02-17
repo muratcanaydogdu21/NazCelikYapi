@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naz Çelik Yapı</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+   
+   <!-- Navbar -->
+   <div class="navbar">
+    <ul>
+       <li><a href="index.html" > <img src="house.png" alt="Anasayfa" class="nav-icon"> Anasayfa</a></li>
+        <li><a href="hakkimizda.html" ><img src="help.png" alt="hakkımızda" class="nav-icon">Hakkımızda</a></li>
+        <li><a href="hizmetler.html"><img src="wrench.png" alt="hizmetler" class="nav-icon">Hizmetler</a></li>
+        <li><a href="projeler.html" class="active"><img src="layer.png" alt="projeler" class="nav-icon">Projeler</a></li>
+        <li><a href="iletisim.html" ><img src="contact.png" alt="iletisim" class="nav-icon">İletişim</a></li>
+        
+    </ul>
+</div>
+
+<button id="sidebarOpen" class="sidebar-toggle" onclick="openSidebar()">☰ Menü</button>
+
+<div id="sidebarMenu" class="sidebar">
+    <ul>
+        <li><a href="index.html" class="active"> <img src="house.png" alt="Anasayfa" class="nav-icon"> Anasayfa</a></li>
+        <li><a href="hakkimizda.html" ><img src="help.png" alt="hakkımızda" class="nav-icon">Hakkımızda</a></li>
+        <li><a href="hizmetler.html"><img src="wrench.png" alt="hizmetler" class="nav-icon">Hizmetler</a></li>
+        <li><a href="projeler.html"><img src="layer.png" alt="projeler" class="nav-icon">Projeler</a></li>
+        <li><a href="iletisim.html"><img src="contact.png" alt="iletisim" class="nav-icon">İletişim</a></li>
+        <li><a href="fotogaleri.html"><img src="camera.png" alt="foto" class="nav-icon">Foto Galeri</a></li>
+        <li><a href="nedencelikyapi.html"><img src="metal-recycling.png" alt="foto" class="nav-icon">Neden Çelik Yapı</a></li>
+    </ul>
+    
+    <!-- 🛑 Sidebar İçinde Kapatma Butonu -->
+    <button id="sidebarClose" class="sidebar-close" onclick="closeSidebar()">✖ Kapat</button>
+</div>
+
+<div class="slideshow-container">
+    <!-- Şirket Başlığı -->
+    <h1 class="company-name">Naz Çelik Yapı</h1>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <img src="çelik1.jpg" alt="Slideshow Image">
+        <img src="çelik2.jpg" alt="Slideshow Image">
+        <img src="steel-e76czqkvaa4alhah.jpg" alt="Slideshow Image">
+        
+        
+    </div>
+</div>
+
+
+<div class="projects-container">
+    <h2 class="project-title" onclick="toggleSection('completed-projects')">Tamamlanmış Projeler</h2>
+    <div id="completed-projects" class="project-content">
+        <div class="project-info">
+            <h3>Proje İsmi: Örnek Proje 1</h3>
+            <p>Yeri: İstanbul, Türkiye</p>
+            <p>Başlama Tarihi: Ocak 2023</p>
+            <p>Bitiş Tarihi: Aralık 2023</p>
+        </div>
+        <div class="project-gallery">
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <div class="gallery-wrapper">
+                <img src="C:\Users\muri-\Desktop\NazÇelik2\çelikFoto\IMG-20250206-WA0009.jpg" alt="Proje Görsel 1">
+                <img src="C:\Users\muri-\Desktop\NazÇelik2\çelikFoto\IMG-20250206-WA0016.jpg" alt="Proje Görsel 2">
+                <img src="C:\Users\muri-\Desktop\NazÇelik2\çelikFoto\IMG-20250206-WA0005.jpg" alt="Proje Görsel 3">
+            </div>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+
+    <h2 class="project-title" onclick="toggleSection('ongoing-projects')">Devam Eden Projeler</h2>
+    <div id="ongoing-projects" class="project-content">
+        <p>Henüz eklenmiş devam eden projeler bulunmamaktadır.</p>
+    </div>
+</div>
+
+
+
+<style>
+.projects-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 100px;
+    
+}
+
+.project-title {
+    background-color: #010b62;  /* Arka plan rengi */
+    color: white;            /* Yazı rengi */
+    padding: 15px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    /* 🎨 Çerçeve rengini buradan değiştir */
+}
+
+.project-content {
+    display: none;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.project-info {
+    margin-bottom: 15px;
+}
+
+.project-gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+}
+
+.gallery-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 600px;
+}
+
+.gallery-wrapper img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    display: none;
+    border-radius: 10px;
+}
+
+.gallery-wrapper img.active {
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #010b62;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 90px;
+    
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Mobil uyum */
+@media (max-width: 768px) {
+    .gallery-wrapper {
+        width: 100%;
+    }
+    .gallery-wrapper img {
+        width: 100%;
+    }
+}
+</style>
+
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".gallery-wrapper img");
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove("active"));
+        slides[index].classList.add("active");
+    }
+
+    document.querySelector(".prev").addEventListener("click", function () {
+        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+        showSlide(currentSlide);
+    });
+
+    document.querySelector(".next").addEventListener("click", function () {
+        currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+        showSlide(currentSlide);
+    });
+
+    // İlk resmi göster
+    showSlide(currentSlide);
+});
+
+// Proje bilgilerini aç/kapatma fonksiyonu
+function toggleSection(id) {
+    const section = document.getElementById(id);
+    section.style.display = (section.style.display === "block") ? "none" : "block";
+}
+
+</script>
+
+
+
+    
+ <footer>
+        <p>&copy; 2023 Naz Çelik Yapı. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

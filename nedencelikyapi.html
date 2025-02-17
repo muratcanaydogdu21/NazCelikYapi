@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naz Çelik Yapı</title>
+    <link rel="stylesheet" href="hakkimizda.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+    <!-- Üst Görsel ve Başlık -->
+    
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <ul>
+            <li><a href="index.html" > <img src="house.png" alt="Anasayfa" class="nav-icon"> Anasayfa</a></li>
+            <li><a href="hakkimizda.html" class="active" ><img src="help.png" alt="hakkımızda" class="nav-icon">Hakkımızda</a></li>
+            <li><a href="hizmetler.html"><img src="wrench.png" alt="hizmetler" class="nav-icon">Hizmetler</a></li>
+            <li><a href="projeler.html"><img src="layer.png" alt="projeler" class="nav-icon">Projeler</a></li>
+            <li><a href="iletisim.html"><img src="contact.png" alt="iletisim" class="nav-icon">İletişim</a></li>
+        </ul>
+    </div>
+
+
+    <button id="sidebarOpen" class="sidebar-toggle" onclick="openSidebar()">☰ Menü</button>
+
+<!-- 🟢 Sidebar (Başlangıçta Gizli) -->
+<div id="sidebarMenu" class="sidebar">
+    <ul>
+        <ul>
+            <li><a href="index.html" class="active"> <img src="house.png" alt="Anasayfa" class="nav-icon"> Anasayfa</a></li>
+            <li><a href="hakkimizda.html" ><img src="help.png" alt="hakkımızda" class="nav-icon">Hakkımızda</a></li>
+            <li><a href="hizmetler.html"><img src="wrench.png" alt="hizmetler" class="nav-icon">Hizmetler</a></li>
+            <li><a href="projeler.html"><img src="layer.png" alt="projeler" class="nav-icon">Projeler</a></li>
+            <li><a href="iletisim.html"><img src="contact.png" alt="iletisim" class="nav-icon">İletişim</a></li>
+            <li><a href="fotogaleri.html"><img src="camera.png" alt="foto" class="nav-icon">Foto Galeri</a></li>
+            <li><a href="nedencelikyapi.html"><img src="metal-recycling.png" alt="foto" class="nav-icon">Neden Çelik Yapı</a></li>
+        </ul>
+    <!-- 🛑 Sidebar İçinde Kapatma Butonu -->
+    <button id="sidebarClose" class="sidebar-close" onclick="closeSidebar()">✖ Kapat</button>
+</div>
+
+<div class="slideshow-container">
+    <!-- Şirket Başlığı -->
+    <h1 class="company-name">Naz Çelik Yapı</h1>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <img src="çelik1.jpg" alt="Slideshow Image">
+        <img src="çelik2.jpg" alt="Slideshow Image">
+        <img src="steel-e76czqkvaa4alhah.jpg" alt="Slideshow Image">
+        
+        
+    </div>
+</div>
+<style>
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+h2 {
+    text-align: center;
+    color: #010b62;
+}
+.advantage-section {
+    margin-bottom: 30px;
+}
+.advantage-section h3 {
+    background: #010b62;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.advantage-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+.advantage-section ul li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+.advantage-section ul li:last-child {
+    border-bottom: none;
+}
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+}
+</style>
+
+<div class="container">
+<h2>Neden Çelik Yapı?</h2>
+
+<div class="advantage-section">
+    <h3>Teknik Avantajlar</h3>
+    <ul>
+        <li>Homojen ve izotrop malzeme yapısı</li>
+        <li>Yüksek mukavemet</li>
+        <li>Elastiklik modülü yüksek</li>
+        <li>Depreme dayanıklılık</li>
+        <li>Hızlı montaj süreci</li>
+    </ul>
+</div>
+
+<div class="advantage-section">
+    <h3>Estetik Avantajlar</h3>
+    <ul>
+        <li>Ferahlık sağlayan tasarım</li>
+        <li>Geniş açıklıklar oluşturabilme</li>
+        <li>Modern mimariyle uyumluluk</li>
+        <li>Minimalist ve şeffaf tasarım</li>
+    </ul>
+</div>
+
+<div class="advantage-section">
+    <h3>Ekonomik Avantajlar</h3>
+    <ul>
+        <li>Kolay taşınabilirlik</li>
+        <li>Uzun ömürlü yapı malzemesi</li>
+        <li>Geri dönüşüme uygun</li>
+        <li>Hafif malzeme yapısı</li>
+    </ul>
+</div>
+</div>
+
+
+
+
+
+<footer>
+    <p>&copy; 2023 Naz Çelik Yapı. Tüm hakları saklıdır.</p>
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

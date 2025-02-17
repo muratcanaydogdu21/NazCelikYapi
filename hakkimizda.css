@@ -1,0 +1,418 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+}
+
+
+
+/* Navbar */
+.navbar {
+background-color: #010b62;
+color: black;
+padding: 15px 20px; /* Daha kalınlık için padding artırıldı */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif bir gölge eklendi */
+position: fixed; /* Sayfa kaydırıldığında sabit kalması için */
+top: 0;
+z-index: 1000; /* Üstte kalması için */
+width: 100vw;
+}
+.navbar ul {
+list-style: none;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.navbar ul li {
+margin: 0 20px; /* Menü öğeleri arasındaki mesafeyi artırdı */
+}
+.navbar ul li a {
+color: color-mix(in oklab, #0962ea 47%, #41d8bf 53%);
+text-decoration: none;
+font-size: 1.2rem; /* Yazı boyutu artırıldı */
+font-weight: bolder; /* Daha kalın yazı */
+transition: color 0.3s, transform 0.2s; /* Hover efektine animasyon eklendi */
+padding: 10px 15px; /* Menü öğelerine iç boşluk eklendi */
+border-radius: 5px; /* Köşeler yuvarlatıldı */
+font-family:'Courier New', Courier, monospace;
+}
+.navbar ul li a:hover {
+color: color-mix(in oklab, #0962ea 47%, #41d8bf 53%); /* Altın rengi hover efekti */
+background-color: rgba(255, 255, 255, 0.2); /* Şeffaf bir arka plan hover efekti */
+transform: scale(1.1); /* Hover sırasında hafif büyüme efekti */
+
+}
+
+/* Navbar'daki aktif bağlantı için stil */
+.navbar ul li a.active {
+color: color-mix(in oklab, #0355cf 47%, #41d8bf 53%);
+font-weight: bold;
+border-bottom: 2px solid #1989ac;
+}
+
+.navbar ul {
+list-style: none;
+display: flex;
+gap: 20px; /* Menü öğeleri arasındaki boşluk */
+}
+
+.navbar li {
+display: flex;
+align-items: center; /* Dikey hizalama */
+}
+
+.nav-icon {
+width: 20px;  /* SVG ikon boyutu */
+height: 20px;
+margin-right: 8px; /* İkon ile metin arasına boşluk bırak */
+}
+/* Geri kalan CSS kodu aynı kalabilir */
+
+.sidebar {
+width: 100vw;  
+height: 100vh;  
+position: fixed;
+top: 0;
+left: -100vw;  
+background-color: #010b62bc;
+padding-top: 20px;
+
+z-index: 1000;
+transition: left 0.7s ease-in-out;
+
+  
+}
+.sidebar ul {
+list-style-type: none;
+padding: 0;
+}
+
+.sidebar ul li {
+padding: 15px;
+border-bottom: 1px solid #0e2e3b;
+}
+
+.sidebar ul li a {
+color: white;
+text-decoration: none;
+display: block;
+font-size: 18px;
+}
+
+.sidebar ul li:hover {
+background-color: color-mix(in oklab, #0045ad 60%, #41d8bf 40%);
+}
+
+/* 🟠 Sidebar Açma Butonu */
+.sidebar-toggle {
+position: fixed;
+top: 20px;
+left: 20px;
+background-color: color-mix(in oklab, #0045ad 60%, #41d8bf 40%);
+color: white;
+border: none;
+padding: 10px 15px;
+font-size: 18px;
+cursor: pointer;
+z-index: 1100;  
+border-radius: 90px;
+}
+
+
+
+.sidebar-toggle:hover {
+background-color: color-mix(in oklab, #0045ad 60%, #41d8bf 40%);
+}
+
+.sidebar.active ~ #sidebarOpen {
+display: none;
+}
+
+/* 🛑 Sidebar İçinde Kapatma Butonu */
+.sidebar-close {
+
+
+width: 100%;
+background-color: #010b62bc;
+color: white;
+border: none;
+padding: 10px;
+font-size: 15px;
+cursor: pointer;
+margin-top: 40px;
+border-radius: 200px;
+}
+
+.sidebar-close:hover {
+background-color: #0e2e3b;
+}
+
+/* 🟢 Sidebar Açıkken */
+.sidebar.active {
+left: 0;
+}
+
+/* Slideshow'u içeren ana container */
+.slideshow-container {
+position: relative;
+width: 100%;
+height: 300px; /* Yüksekliği ihtiyacına göre ayarla */
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+
+/* Şirket Başlığı */
+.company-name {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 7rem;
+font-weight: bold;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+z-index: 2; /* Başlığı en önde tut */
+}
+
+/* Slideshow */
+.slideshow {
+position: absolute;
+width: 100%;
+height: 100%;
+}
+
+.slideshow img {
+position: absolute;
+width: 100%;
+height: 100%;
+object-fit: cover; /* Resmi kırpmadan tam ekran yap */
+opacity: 0; /* Varsayılan olarak tüm resimleri gizle */
+transition: opacity 1s ease-in-out;
+}
+
+/* İlk resmin başlangıçta görünür olması için */
+.slideshow img:first-child {
+opacity: 1;
+}
+
+/* Kaydırma Alanı */
+/* Slider Alanı */
+.image-slider {
+overflow: hidden;
+width: 100%;
+position: relative;
+padding: 20px 0;
+display: flex;
+justify-content: center;
+}
+
+/* Kaydırma Alanı */
+.slider-track {
+display: flex;
+gap: 30px; /* Fotoğraflar arasında daha fazla boşluk */
+width: 250%;
+animation: slideAnimation 15s linear infinite;
+}
+
+/* Fotoğraflar */
+.slide img {
+width: 120px;  /* Daha küçük boyut */
+height: 90px;
+object-fit: cover;
+border-radius: 12px; /* Kenarları daha yumuşak yap */
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+
+}
+
+
+@media (max-width: 768px) {
+.company-name {
+    font-size: 3rem; /* Küçük ekranlarda daha büyük font */
+}}
+
+.hakkimizda-container {
+  display: flex;
+  justify-content: center;  /* Yatayda ortala */
+  align-items: center;      /* Dikeyde ortala */
+  gap: 40px;                /* Kartlar arasında boşluk */
+  padding: 50px;
+  flex-wrap: wrap;          /* Küçük ekranlarda alt alta geçmesini sağlar */
+}
+
+.card {
+  position: relative;
+  width: 350px;  /* Kart genişliği */
+  height: 300px; /* Kart yüksekliği */
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 20px; /* İçerik taşmasını engeller */
+}
+
+.card-content h2 {
+  position: absolute;
+  color: white;
+  font-size: 30px; /* Başlık boyutu */
+  font-weight: bolder;
+  text-align: center;
+  padding: 10px;
+  max-width: 90%; /* Başlığın taşmasını engelle */
+  word-wrap: break-word; /* Uzun kelimeleri böl */
+  transition: opacity 0.3s ease-in-out;
+  left: 50%; /* Başlığı tam ortaya al */
+  top: 50%; /* Dikeyde ortala */
+  transform: translate(-50%, -50%); /* Gerçek ortalama */
+  font-family:'Courier New', Courier, monospace;
+}
+
+.card-expanded {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.736);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* Kart büyüyünce içeriği göster */
+.card.expanded .card-expanded {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Kart büyüdüğünde başlık kaybolsun */
+.card.expanded .card-content h2 {
+  opacity: 0;
+}
+
+/* Kartların Arka Planları */
+#vizyon {
+  background-image: url('çelik1.jpg');
+}
+
+#misyon {
+  background-image: url('çelik2.jpg');
+}
+
+#tarihce {
+  background-image: url('power-plant-construction.jpg');
+}
+
+/* 📌 Mobil Görünüm için Düzenlemeler */
+@media (max-width: 768px) {
+  .hakkimizda-container {
+      flex-direction: column; /* Kartları alt alta dizer */
+      align-items: center;
+  }
+
+  .card {
+      width: 90%; /* Küçük ekranlarda genişlik */
+      height: 200px; /* Yükseklik ayarlandı */
+  }
+
+  .card-content h2 {
+      font-size: 18px; /* Mobilde başlığı küçült */
+      padding: 8px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+  }
+}
+
+/* Footer */
+footer {
+  position: fixed; /* Footer ekranın altına sabitlenir */
+  bottom: 0; /* Footer alt kenara yaslanır */
+  left: 0;
+  width: 100vw; /* Footer tam genişliği kaplar */
+  background-color: #010b62;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000; /* Her şeyin üstünde kalır */
+  justify-content: center;
+  display: flex;}
+
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: white;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {  /* Tablet ve daha küçük cihazlar */
+  .text-overlay {
+    max-width: 90%;  /* Metin kutusunu küçült */
+    font-size: 1rem;
+    padding: 15px;
+  }}
+
+  .slider img {
+    width: 120%;  /* Mobilde daha iyi görüntü için genişlik artırıldı */
+  }
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none; /* Navbar mobilde tamamen gizlenecek */
+    }
+}
+
+@media (max-width: 480px) {  /* Telefonlar için ekstra optimizasyon */
+  .text-overlay {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .slider {
+    height: 350px;  /* Mobilde çok fazla yer kaplamaması için */
+  }
+}
+
